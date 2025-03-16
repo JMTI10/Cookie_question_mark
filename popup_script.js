@@ -1,13 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const popup = document.getElementById("popup");
-    const openPopupBtn = document.getElementById("openPopup");
-    const closePopupBtn = document.getElementById("closePopup");
+    const store = document.getElementById("store");
+    const storeButton = document.getElementById("storeButton");
 
-    openPopupBtn.addEventListener("click", function () {
-        popup.style.display = "block";
-    });
-
-    closePopupBtn.addEventListener("click", function () {
-        popup.style.display = "none";
+    storeButton.addEventListener("click", function () {
+        store.classList.toggle("active");
     });
 });
