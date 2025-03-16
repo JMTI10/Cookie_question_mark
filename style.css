@@ -35,10 +35,12 @@ body {
 }
 
 .cookie {
-    width: 200px;
+    width: 200px; /* Set a fixed width */
+    height: auto;
     cursor: pointer;
     transition: transform 0.1s;
 }
+
 
 /* Click effect */
 .cookie:active {
@@ -71,11 +73,12 @@ body {
 }
 
 /* Hidden checkbox for toggling */
+/* Hide the checkbox */
 .popup-checkbox {
     display: none;
 }
 
-/* Toggle button (arrow) */
+/* Style the toggle button */
 .popup-toggle {
     display: block;
     text-align: center;
@@ -88,13 +91,14 @@ body {
     border-radius: 5px;
 }
 
-/* Hidden content inside the popup bar */
+/* Fix spacing for upgrade buttons */
 .popup-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
     padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
+
 
 /* Expand content when checkbox is checked */
 .popup-checkbox:checked + .popup-toggle + .popup-content {
@@ -106,14 +110,15 @@ body {
     content: "▼";
 }
 
-/* Style for upgrade buttons */
 .upgrade-option {
     display: block;
     width: 100%;
-    margin-top: 5px;
     padding: 8px;
     background-color: #ffcc00;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    text-align: center;
+    margin-top: 5px;
 }
+
