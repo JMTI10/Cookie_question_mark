@@ -20,6 +20,14 @@ cookie.addEventListener("click", function () {
     updateCookieCount();
 });
 
+// Toggle Store Panel
+const storeButton = document.getElementById("storeButton");
+const storePanel = document.getElementById("store");
+
+storeButton.addEventListener("click", function () {
+    storePanel.classList.toggle("active");
+});
+
 // Upgrade: Auto Clicker
 const autoClickerBtn = document.getElementById("autoClicker");
 autoClickerBtn.addEventListener("click", function () {

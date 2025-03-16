@@ -54,10 +54,30 @@ body {
     transform: scale(0.9);
 }
 
-/* Small expandable bar at the bottom-right */
+/* Store Button */
+.popup-toggle {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    background: #ffcc00;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.2s;
+    width: 120px;
+}
+
+.popup-toggle:hover {
+    background: #e6b800;
+}
+
+/* Store Panel */
 .popup-bar {
     position: fixed;
-    bottom: 0;
+    bottom: -100%;
     right: 20px;
     width: 280px;
     background: white;
@@ -66,53 +86,15 @@ body {
     box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px 5px 0 0;
     overflow: hidden;
+    transition: bottom 0.3s ease-in-out;
 }
 
-/* Shop Toggle Button */
-.popup-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background: #ffcc00;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.2s;
+/* Show the store when active */
+.popup-bar.active {
+    bottom: 50px;
 }
 
-.popup-toggle:hover {
-    background: #e6b800;
-}
-
-.popup-toggle::before {
-    content: "🛒 Shop";
-}
-
-/* Shop Content */
-.popup-content {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    visibility: hidden;
-    opacity: 0;
-}
-
-/* Expand shop when opened */
-.popup-checkbox:checked + .popup-toggle + .popup-content {
-    max-height: 200px;
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Upgrade buttons */
+/* Store Buttons */
 .upgrade-option {
     display: block;
     width: 100%;
