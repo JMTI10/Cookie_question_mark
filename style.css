@@ -10,10 +10,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin: 0;
     position: relative;
     overflow: hidden;
+    padding-top: 20px;
 }
 
 /* Score counter in the top-right */
@@ -34,8 +35,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: auto;
     width: 100%;
+    margin-top: 20px;
 }
 
 .cookie {
