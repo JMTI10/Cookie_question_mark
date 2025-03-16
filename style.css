@@ -1,9 +1,9 @@
-/* Set the dark background and center everything */
+/* Light brown background */
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background-color: #121212; /* Darker background */
-    color: white;
+    background-color: #d2b48c; /* Light brown background */
+    color: black;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,15 @@ body {
     margin: 0;
 }
 
-/* Style for the cookie image */
+/* Centering the cookie */
+.cookie-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Adjust to fit nicely */
+    width: 100%;
+}
+
 .cookie {
     width: 200px; /* Adjust size as needed */
     cursor: pointer;
@@ -28,10 +36,10 @@ body {
 .counter {
     font-size: 24px;
     margin: 20px 0;
-    color: #fff;
+    color: black; /* Better contrast */
 }
 
-/* Style for the upgrade button */
+/* Upgrade button at bottom */
 .upgrade-btn {
     padding: 10px;
     font-size: 16px;
