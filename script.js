@@ -21,24 +21,24 @@ function updateCookieCount() {
 
 // Click cookie to earn cookies
 const cookie = document.getElementById("cookie");
-cookie.addEventListener("click", function (event) {
+cookie.addEventListener("click", function () {
     cookies += cookiesPerClick;
     updateCookieCount();
-    createFallingCookie(event.clientX, event.clientY);
+    createFallingCookie();
 });
 
-// Function to create falling cookies
-function createFallingCookie(x, y) {
+// Function to create falling cookies from the top
+function createFallingCookie() {
     const fallingCookie = document.createElement("img");
     fallingCookie.src = "images/cookie.png";
     fallingCookie.classList.add("falling-cookie");
-    fallingCookie.style.left = `${x}px`;
-    fallingCookie.style.top = `${y}px`;
+    fallingCookie.style.left = `${Math.random() * window.innerWidth}px`;
+    fallingCookie.style.top = `-50px`;
     document.body.appendChild(fallingCookie);
-    
+
     setTimeout(() => {
         fallingCookie.remove();
-    }, 1000);
+    }, 3000);
 }
 
 // Toggle Store Panel
@@ -80,35 +80,6 @@ doubleCookiesBtn.addEventListener("click", function () {
         cookiesPerClick *= 2;
         updateCookieCount();
         localStorage.setItem("cookiesPerClick", cookiesPerClick);
-    }
-});
-
-// Upgrade: Golden Cookie
-const goldenCookieBtn = document.getElementById("goldenCookie");
-goldenCookieBtn.addEventListener("click", function () {
-    if (cookies >= goldenCookieCost) {
-        cookies -= goldenCookieCost;
-        updateCookieCount();
-        setTimeout(() => {
-            cookies += 100;
-            updateCookieCount();
-        }, 5000);
-    }
-});
-
-// Upgrade: Speed Boost
-const speedBoostBtn = document.getElementById("speedBoost");
-speedBoostBtn.addEventListener("click", function () {
-    if (cookies >= speedBoostCost) {
-        cookies -= speedBoostCost;
-        updateCookieCount();
-        if (autoClickerActive) {
-            clearInterval(autoClickerInterval);
-            autoClickerInterval = setInterval(() => {
-                cookies += cookiesPerClick;
-                updateCookieCount();
-            }, 500);
-        }
     }
 });
 
