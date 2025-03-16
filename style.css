@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f8e8c8;
+}
+.cookie {
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.cookie:active {
+    transform: scale(0.9);
+}
+.counter {
+    font-size: 24px;
+    margin: 20px 0;
+}
+.upgrade-btn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+}
