@@ -22,28 +22,4 @@ const cookie = document.getElementById("cookie");
 cookie.addEventListener("click", function () {
     cookies += cookiesPerClick;
     updateCookieCount();
-    createFallingCookie();
 });
-
-// Function to create falling cookies from the top
-function createFallingCookie() {
-    const fallingCookie = document.createElement("img");
-    fallingCookie.src = "images/cookie.png";
-    fallingCookie.classList.add("falling-cookie");
-    fallingCookie.style.left = `${Math.random() * window.innerWidth}px`;
-    fallingCookie.style.top = `-50px`;
-    document.body.appendChild(fallingCookie);
-
-    setTimeout(() => { fallingCookie.remove(); }, 3000);
-}
-
-// Toggle Store Panel
-const storeButton = document.getElementById("storeButton");
-const storePanel = document.getElementById("store");
-
-storeButton.addEventListener("click", function () {
-    storePanel.classList.toggle("active");
-});
-
-// Load saved cookies
-updateCookieCount();
