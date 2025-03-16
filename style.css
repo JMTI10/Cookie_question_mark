@@ -11,6 +11,7 @@ body {
     justify-content: center;
     margin: 0;
     position: relative;
+    overflow: hidden;
 }
 
 /* Score counter in the top-right */
@@ -25,7 +26,7 @@ body {
     border-radius: 5px;
 }
 
-/* Cookie Centering */
+/* Cookie Centering and Size Fix */
 .cookie-container {
     display: flex;
     justify-content: center;
@@ -40,7 +41,6 @@ body {
     cursor: pointer;
     transition: transform 0.1s;
 }
-
 
 /* Click effect */
 .cookie:active {
@@ -72,44 +72,51 @@ body {
     overflow: hidden;
 }
 
-/* Hidden checkbox for toggling */
 /* Hide the checkbox */
 .popup-checkbox {
     display: none;
 }
 
-/* Style the toggle button */
+/* Toggle button with shopping cart icon */
 .popup-toggle {
-    display: block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     background: #ffcc00;
     border: none;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
 }
 
-/* Fix spacing for upgrade buttons */
+.popup-toggle::before {
+    content: "🛒"; /* Shopping cart icon */
+    font-size: 18px;
+}
+
+/* Hidden content inside the popup bar */
 .popup-content {
     padding-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
 }
-
 
 /* Expand content when checkbox is checked */
 .popup-checkbox:checked + .popup-toggle + .popup-content {
     max-height: 100px;
+    visibility: visible;
+    opacity: 1;
 }
 
-/* Change arrow direction when checked */
-.popup-checkbox:checked + .popup-toggle::after {
-    content: "▼";
-}
-
+/* Fix button alignment and spacing */
 .upgrade-option {
     display: block;
     width: 100%;
@@ -121,4 +128,3 @@ body {
     text-align: center;
     margin-top: 5px;
 }
-
