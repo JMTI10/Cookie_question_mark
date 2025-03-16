@@ -10,7 +10,7 @@ body {
     flex-direction: column;
 }
 .cookie {
-    width: 150px;
+    width: 200px;
     cursor: pointer;
     transition: transform 0.1s;
     position: absolute;
@@ -21,6 +21,7 @@ body {
 .cookie:active {
     transform: translate(-50%, -50%) scale(0.9);
 }
+
 .counter {
     font-size: 24px;
     margin: 20px 0;
