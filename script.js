@@ -13,14 +13,31 @@ function updateCookieCount() {
     localStorage.setItem("cookies", cookies);
 }
 
+// Function to create falling cookies from the top
+function createFallingCookie() {
+    const fallingCookie = document.createElement("img");
+    fallingCookie.src = "images/cookie.png";
+    fallingCookie.classList.add("falling-cookie");
+    fallingCookie.style.left = `${Math.random() * window.innerWidth}px`;
+    fallingCookie.style.top = `-50px`;
+    document.body.appendChild(fallingCookie);
+    
+    setTimeout(() => {
+        fallingCookie.remove();
+    }, 3000);
+}
+
 // Click cookie to earn cookies
-document.getElementById("cookie").addEventListener("click", function () {
+const cookie = document.getElementById("cookie");
+cookie.addEventListener("click", function () {
     cookies += cookiesPerClick;
     updateCookieCount();
+    createFallingCookie();
 });
 
 // Auto Clicker Upgrade
-document.getElementById("autoClicker").addEventListener("click", function () {
+const autoClickerBtn = document.getElementById("autoClicker");
+autoClickerBtn.addEventListener("click", function () {
     if (cookies >= autoClickerCost && !autoClickerActive) {
         cookies -= autoClickerCost;
         autoClickerActive = true;
@@ -28,6 +45,7 @@ document.getElementById("autoClicker").addEventListener("click", function () {
         autoClickerInterval = setInterval(() => {
             cookies += cookiesPerClick;
             updateCookieCount();
+            createFallingCookie(); // Create rain when Auto Clicker is on
         }, 1000);
     }
 });
@@ -37,11 +55,13 @@ if (autoClickerActive) {
     autoClickerInterval = setInterval(() => {
         cookies += cookiesPerClick;
         updateCookieCount();
+        createFallingCookie(); // Keep raining when reloaded
     }, 1000);
 }
 
 // Double Cookies Upgrade
-document.getElementById("doubleCookies").addEventListener("click", function () {
+const doubleCookiesBtn = document.getElementById("doubleCookies");
+doubleCookiesBtn.addEventListener("click", function () {
     if (cookies >= doubleCookiesCost) {
         cookies -= doubleCookiesCost;
         cookiesPerClick *= 2;
