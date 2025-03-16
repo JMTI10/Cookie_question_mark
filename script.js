@@ -1,10 +1,10 @@
 let cookies = parseInt(localStorage.getItem("cookies")) || 0;
 let cookiesPerClick = parseInt(localStorage.getItem("cookiesPerClick")) || 1;
+let autoClickerActive = JSON.parse(localStorage.getItem("autoClickerActive")) || false;
 let autoClickerCost = 50;
 let doubleCookiesCost = 100;
 let goldenCookieCost = 200;
 let speedBoostCost = 300;
-let autoClickerActive = false;
 let autoClickerInterval;
 
 // Update cookie count display
@@ -35,12 +35,21 @@ autoClickerBtn.addEventListener("click", function () {
         cookies -= autoClickerCost;
         updateCookieCount();
         autoClickerActive = true;
+        localStorage.setItem("autoClickerActive", JSON.stringify(autoClickerActive));
         autoClickerInterval = setInterval(() => {
             cookies += cookiesPerClick;
             updateCookieCount();
         }, 1000);
     }
 });
+
+// Restore Auto Clicker on page reload
+if (autoClickerActive) {
+    autoClickerInterval = setInterval(() => {
+        cookies += cookiesPerClick;
+        updateCookieCount();
+    }, 1000);
+}
 
 // Upgrade: Double Cookies per Click
 const doubleCookiesBtn = document.getElementById("doubleCookies");

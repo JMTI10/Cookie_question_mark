@@ -10,11 +10,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin: 0;
     position: relative;
     overflow: hidden;
-    padding-top: 20px;
+}
+
+/* Center title */
+h1 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 /* Score counter in the top-right */
@@ -30,13 +36,12 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Cookie Styling */
+/* Center the cookie */
 .cookie-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
-    width: 100%;
+    flex-direction: column;
     margin-top: 20px;
 }
 
@@ -54,77 +59,4 @@ body {
 
 .cookie:active {
     transform: scale(0.9);
-}
-
-/* Store Button */
-.popup-toggle {
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
-    background: #ffcc00;
-    border: none;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.2s;
-    width: 120px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.popup-toggle:hover {
-    background: #e6b800;
-}
-
-/* Store Panel with Improved Styling */
-.popup-bar {
-    position: fixed;
-    bottom: -100%;
-    right: 20px;
-    width: 320px;
-    background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
-    border: 3px solid #d48806;
-    padding: 20px;
-    box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.4);
-    border-radius: 20px 20px 0 0;
-    overflow: hidden;
-    transition: bottom 0.3s ease-in-out;
-    text-align: center;
-}
-
-/* Show the store when active */
-.popup-bar.active {
-    bottom: 60px;
-}
-
-/* Store Header */
-.popup-bar p {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Store Buttons with Enhanced Look */
-.upgrade-option {
-    display: block;
-    width: 100%;
-    padding: 14px;
-    background: #ffcc00;
-    border: none;
-    cursor: pointer;
-    border-radius: 12px;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-}
-
-.upgrade-option:hover {
-    background: #e6b800;
-    transform: scale(1.08);
 }
