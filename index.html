@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Clicker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <h1>Cookie Clicker</h1>
     <p class="counter">Cookies: <span id="cookieCount">0</span></p>
+    
     <div class="cookie-container">
         <img src="images/cookie.png" alt="Cookie" class="cookie" id="cookie">
     </div>
+    
     <button class="upgrade-btn" id="upgrade">Upgrade (Cost: 10)</button>
-    <button id="openPopup" class="open-popup-btn">Open Window</button>
+
+    <!-- Expandable Bottom-Right Bar with Upgrades -->
     <div class="popup-bar">
         <input type="checkbox" id="togglePopup" class="popup-checkbox">
         <label for="togglePopup" class="popup-toggle">▲</label>
         <div class="popup-content">
-            <p>This is a small expandable window!</p>
+            <p>Upgrades:</p>
+            <button class="upgrade-option" id="autoClicker">Auto Clicker (Cost: 50)</button>
+            <button class="upgrade-option" id="doubleCookies">Double Cookies (Cost: 100)</button>
         </div>
     </div>
-    <script src="popup_script.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>

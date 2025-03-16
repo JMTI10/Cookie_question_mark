@@ -1,27 +1,41 @@
 let cookies = 0;
-let upgradeCost = 10;
 let cookiesPerClick = 1;
+let autoClickerCost = 50;
+let doubleCookiesCost = 100;
+let autoClickerActive = false;
 
-document.getElementById("cookie").addEventListener("click", function() {
-    cookies += cookiesPerClick;
+// Update cookie count display
+function updateCookieCount() {
     document.getElementById("cookieCount").textContent = cookies;
+}
+
+// Click cookie to earn cookies
+const cookie = document.getElementById("cookie");
+cookie.addEventListener("click", function () {
+    cookies += cookiesPerClick;
+    updateCookieCount();
 });
 
-document.getElementById("upgrade").addEventListener("click", function() {
-    if (cookies >= upgradeCost) {
-        cookies -= upgradeCost;
-        cookiesPerClick++;
-        upgradeCost *= 2;
-        document.getElementById("cookieCount").textContent = cookies;
-        document.getElementById("upgrade").textContent = `Upgrade (Cost: ${upgradeCost})`;
+// Upgrade: Auto Clicker
+const autoClickerBtn = document.getElementById("autoClicker");
+autoClickerBtn.addEventListener("click", function () {
+    if (cookies >= autoClickerCost && !autoClickerActive) {
+        cookies -= autoClickerCost;
+        updateCookieCount();
+        autoClickerActive = true;
+        setInterval(() => {
+            cookies += cookiesPerClick;
+            updateCookieCount();
+        }, 1000);
     }
 });
 
-// Center cookie positioning
-window.onload = function() {
-    let cookie = document.getElementById("cookie");
-    cookie.style.position = "absolute";
-    cookie.style.top = "50%";
-    cookie.style.left = "50%";
-    cookie.style.transform = "translate(-50%, -50%)";
-};
+// Upgrade: Double Cookies per Click
+const doubleCookiesBtn = document.getElementById("doubleCookies");
+doubleCookiesBtn.addEventListener("click", function () {
+    if (cookies >= doubleCookiesCost) {
+        cookies -= doubleCookiesCost;
+        cookiesPerClick *= 2;
+        updateCookieCount();
+    }
+});

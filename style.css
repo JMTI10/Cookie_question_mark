@@ -1,7 +1,8 @@
+/* General Styles */
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background-color: #d2b48c; /* Light brown background */
+    background-color: #a87c4f; /* Darker brown background */
     color: black;
     height: 100vh;
     display: flex;
@@ -12,7 +13,7 @@ body {
     position: relative;
 }
 
-/* Positioning the score counter at the top-right */
+/* Score counter in the top-right */
 .counter {
     font-size: 24px;
     position: absolute;
@@ -22,19 +23,19 @@ body {
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
-} 
+}
 
-/* Centering the cookie */
+/* Cookie Centering */
 .cookie-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Adjust to fit nicely */
+    height: 50vh;
     width: 100%;
 }
 
 .cookie {
-    width: 200px; /* Adjust size as needed */
+    width: 200px;
     cursor: pointer;
     transition: transform 0.1s;
 }
@@ -44,7 +45,7 @@ body {
     transform: scale(0.9);
 }
 
-/* Upgrade button at bottom */
+/* Upgrade button */
 .upgrade-btn {
     padding: 10px;
     font-size: 16px;
@@ -87,7 +88,7 @@ body {
     border-radius: 5px;
 }
 
-/* Content initially hidden */
+/* Hidden content inside the popup bar */
 .popup-content {
     max-height: 0;
     overflow: hidden;
@@ -95,7 +96,7 @@ body {
     padding-top: 10px;
 }
 
-/* When checkbox is checked, show content */
+/* Expand content when checkbox is checked */
 .popup-checkbox:checked + .popup-toggle + .popup-content {
     max-height: 100px;
 }
@@ -105,3 +106,14 @@ body {
     content: "▼";
 }
 
+/* Style for upgrade buttons */
+.upgrade-option {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
