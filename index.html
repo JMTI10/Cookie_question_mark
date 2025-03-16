@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <h1>Cookie Clicker</h1>
     <p class="counter">Cookies: <span id="cookieCount">0</span></p>
-    
+
     <div class="cookie-container">
-        <img src="images/cookie.png" alt="Cookie" class="cookie" id="cookie">
+        <img src="cookie.png" alt="Cookie" class="cookie" id="cookie">
     </div>
+
+    <!-- Expandable Bottom-Right Shop -->
     <div class="popup-bar">
         <input type="checkbox" id="togglePopup" class="popup-checkbox">
         <label for="togglePopup" class="popup-toggle"></label>
@@ -20,9 +23,11 @@
             <p>Upgrades:</p>
             <button class="upgrade-option" id="autoClicker">Auto Clicker (Cost: 50)</button>
             <button class="upgrade-option" id="doubleCookies">Double Cookies (Cost: 100)</button>
+            <button class="upgrade-option" id="goldenCookie">Golden Cookie (Cost: 200)</button>
+            <button class="upgrade-option" id="speedBoost">Speed Boost (Cost: 300)</button>
         </div>
     </div>
 
-    <script src="upgrades_script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

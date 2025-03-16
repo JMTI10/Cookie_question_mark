@@ -1,12 +1,16 @@
-let cookies = 0;
-let cookiesPerClick = 1;
+let cookies = parseInt(localStorage.getItem("cookies")) || 0;
+let cookiesPerClick = parseInt(localStorage.getItem("cookiesPerClick")) || 1;
 let autoClickerCost = 50;
 let doubleCookiesCost = 100;
+let goldenCookieCost = 200;
+let speedBoostCost = 300;
 let autoClickerActive = false;
+let autoClickerInterval;
 
 // Update cookie count display
 function updateCookieCount() {
     document.getElementById("cookieCount").textContent = cookies;
+    localStorage.setItem("cookies", cookies);
 }
 
 // Click cookie to earn cookies
@@ -23,7 +27,7 @@ autoClickerBtn.addEventListener("click", function () {
         cookies -= autoClickerCost;
         updateCookieCount();
         autoClickerActive = true;
-        setInterval(() => {
+        autoClickerInterval = setInterval(() => {
             cookies += cookiesPerClick;
             updateCookieCount();
         }, 1000);
@@ -37,5 +41,38 @@ doubleCookiesBtn.addEventListener("click", function () {
         cookies -= doubleCookiesCost;
         cookiesPerClick *= 2;
         updateCookieCount();
+        localStorage.setItem("cookiesPerClick", cookiesPerClick);
     }
 });
+
+// Upgrade: Golden Cookie
+const goldenCookieBtn = document.getElementById("goldenCookie");
+goldenCookieBtn.addEventListener("click", function () {
+    if (cookies >= goldenCookieCost) {
+        cookies -= goldenCookieCost;
+        updateCookieCount();
+        setTimeout(() => {
+            cookies += 100;
+            updateCookieCount();
+        }, 5000);
+    }
+});
+
+// Upgrade: Speed Boost
+const speedBoostBtn = document.getElementById("speedBoost");
+speedBoostBtn.addEventListener("click", function () {
+    if (cookies >= speedBoostCost) {
+        cookies -= speedBoostCost;
+        updateCookieCount();
+        if (autoClickerActive) {
+            clearInterval(autoClickerInterval);
+            autoClickerInterval = setInterval(() => {
+                cookies += cookiesPerClick;
+                updateCookieCount();
+            }, 500);
+        }
+    }
+});
+
+// Load saved cookies
+updateCookieCount();

@@ -1,8 +1,10 @@
 /* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');
+
 body {
     text-align: center;
-    font-family: Arial, sans-serif;
-    background-color: #a87c4f; /* Darker brown background */
+    font-family: 'Fredoka', sans-serif;
+    background-color: #a87c4f;
     color: black;
     height: 100vh;
     display: flex;
@@ -20,13 +22,14 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Cookie Centering and Size Fix */
+/* Cookie Styling */
 .cookie-container {
     display: flex;
     justify-content: center;
@@ -36,26 +39,19 @@ body {
 }
 
 .cookie {
-    width: 200px; /* Set a fixed width */
+    width: 200px;
     height: auto;
     cursor: pointer;
-    transition: transform 0.1s;
+    transition: transform 0.2s, filter 0.2s;
 }
 
-/* Click effect */
+.cookie:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+}
+
 .cookie:active {
     transform: scale(0.9);
-}
-
-/* Upgrade button */
-.upgrade-btn {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #ffcc00;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px;
 }
 
 /* Small expandable bar at the bottom-right */
@@ -63,7 +59,7 @@ body {
     position: fixed;
     bottom: 0;
     right: 20px;
-    width: 250px;
+    width: 280px;
     background: white;
     border: 1px solid #000;
     padding: 10px;
@@ -72,12 +68,7 @@ body {
     overflow: hidden;
 }
 
-/* Hide the checkbox */
-.popup-checkbox {
-    display: none;
-}
-
-/* Toggle button with shopping cart icon */
+/* Shop Toggle Button */
 .popup-toggle {
     display: flex;
     justify-content: center;
@@ -87,21 +78,26 @@ body {
     border: none;
     padding: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.popup-toggle:hover {
+    background: #e6b800;
 }
 
 .popup-toggle::before {
-    content: "🛒"; /* Shopping cart icon */
-    font-size: 18px;
+    content: "🛒 Shop";
 }
 
-/* Hidden content inside the popup bar */
+/* Shop Content */
 .popup-content {
     padding-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -109,22 +105,29 @@ body {
     opacity: 0;
 }
 
-/* Expand content when checkbox is checked */
+/* Expand shop when opened */
 .popup-checkbox:checked + .popup-toggle + .popup-content {
-    max-height: 100px;
+    max-height: 200px;
     visibility: visible;
     opacity: 1;
 }
 
-/* Fix button alignment and spacing */
+/* Upgrade buttons */
 .upgrade-option {
     display: block;
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     background-color: #ffcc00;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
     margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.upgrade-option:hover {
+    background: #e6b800;
 }
