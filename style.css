@@ -91,13 +91,13 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Small Store Window */
+/* Store Window with Updated Background */
 .popup-bar {
     position: fixed;
     bottom: -100%;
     right: 20px;
     width: 280px;
-    background: white;
+    background: linear-gradient(135deg, #ffdd99, #ffbb66); /* New gradient background */
     border: 2px solid #000;
     padding: 15px;
     box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.3);
