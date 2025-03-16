@@ -58,17 +58,6 @@ document.getElementById("autoClicker").addEventListener("click", function () {
     }
 });
 
-// Restore Auto Clicker on page reload
-if (autoClickerActive) {
-    autoClickerInterval = setInterval(() => {
-        if (!gamePaused) {
-            cookies += cookiesPerClick;
-            updateCookieCount();
-            createFallingCookie();
-        }
-    }, 1000);
-}
-
 // Double Cookies Upgrade
 document.getElementById("doubleCookies").addEventListener("click", function () {
     if (cookies >= doubleCookiesCost) {
@@ -152,9 +141,30 @@ document.getElementById("ultraSpeedBoost").addEventListener("click", function ()
                     updateCookieCount();
                     createFallingCookie();
                 }
-            }, 250); // Ultra fast clicking
+            }, 250);
         }
     }
+});
+
+// Pause Button
+document.getElementById("pauseButton").addEventListener("click", function () {
+    gamePaused = !gamePaused;
+    this.textContent = gamePaused ? "Resume" : "Pause";
+});
+
+// Reset Button
+document.getElementById("resetButton").addEventListener("click", function () {
+    cookies = 0;
+    cookiesPerClick = 1;
+    autoClickerActive = false;
+    gamePaused = false;
+
+    localStorage.removeItem("cookies");
+    localStorage.removeItem("cookiesPerClick");
+    localStorage.removeItem("autoClickerActive");
+
+    clearInterval(autoClickerInterval);
+    updateCookieCount();
 });
 
 // Load saved cookies & upgrades
