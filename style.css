@@ -55,37 +55,32 @@ body {
     margin-top: 20px;
 }
 
-/* Small window (popup) in the bottom-right corner */
-.popup {
+/* Small expandable bar at the bottom-right */
+.popup-bar {
     position: fixed;
-    bottom: 20px;
+    bottom: 0;
     right: 20px;
     width: 250px;
     background: white;
     border: 1px solid #000;
-    padding: 15px;
-    display: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-}
-
-.popup button {
-    display: block;
-    margin-top: 10px;
-    background-color: #ffcc00;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-/* Button to open the popup */
-.open-popup-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffcc00;
-    border: none;
     padding: 10px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px 5px 0 0;
+}
+
+/* Toggle button inside the bar */
+.popup-toggle {
+    width: 100%;
+    background: #ffcc00;
+    border: none;
+    padding: 5px;
     cursor: pointer;
+    font-size: 16px;
     border-radius: 5px;
+}
+
+/* Hidden content inside the popup bar */
+.popup-content {
+    display: none;
+    padding-top: 10px;
 }
