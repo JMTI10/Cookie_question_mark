@@ -16,3 +16,12 @@ document.getElementById("upgrade").addEventListener("click", function() {
         document.getElementById("upgrade").textContent = `Upgrade (Cost: ${upgradeCost})`;
     }
 });
+
+// Center cookie positioning
+window.onload = function() {
+    let cookie = document.getElementById("cookie");
+    cookie.style.position = "absolute";
+    cookie.style.top = "50%";
+    cookie.style.left = "50%";
+    cookie.style.transform = "translate(-50%, -50%)";
+};

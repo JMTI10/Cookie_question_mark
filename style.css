@@ -1,15 +1,25 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background-color: #f8e8c8;
+    background-color: #222;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .cookie {
     width: 150px;
     cursor: pointer;
     transition: transform 0.1s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .cookie:active {
-    transform: scale(0.9);
+    transform: translate(-50%, -50%) scale(0.9);
 }
 .counter {
     font-size: 24px;
@@ -22,4 +32,6 @@ body {
     background-color: #ffcc00;
     border: none;
     border-radius: 5px;
+    position: absolute;
+    bottom: 20px;
 }
