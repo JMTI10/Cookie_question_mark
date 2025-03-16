@@ -3,8 +3,11 @@ let cookiesPerClick = parseInt(localStorage.getItem("cookiesPerClick")) || 1;
 let autoClickerActive = JSON.parse(localStorage.getItem("autoClickerActive")) || false;
 let autoClickerCost = 50;
 let doubleCookiesCost = 100;
-let goldenCookieCost = 500; // Updated price
-let speedBoostCost = 1000; // Updated price
+let goldenCookieCost = 500;
+let speedBoostCost = 1000;
+let megaClickerCost = 2000;
+let goldenRainCost = 5000;
+let ultraSpeedBoostCost = 10000;
 let autoClickerInterval;
 let gamePaused = false;
 
@@ -13,50 +16,6 @@ function updateCookieCount() {
     document.getElementById("cookieCount").textContent = cookies;
     localStorage.setItem("cookies", cookies);
 }
-
-// Golden Cookie Upgrade (Cost: 500)
-document.getElementById("goldenCookie").addEventListener("click", function () {
-    if (cookies >= goldenCookieCost) {
-        cookies -= goldenCookieCost;
-        updateCookieCount();
-
-        // 2x cookie multiplier for 10 seconds
-        let originalCookiesPerClick = cookiesPerClick;
-        cookiesPerClick *= 2;
-
-        // Show visual effect
-        for (let i = 0; i < 20; i++) {
-            setTimeout(createFallingCookie, i * 100);
-        }
-
-        // Reset multiplier after 10 seconds
-        setTimeout(() => {
-            cookiesPerClick = originalCookiesPerClick;
-        }, 10000);
-    }
-});
-
-// Speed Boost Upgrade (Cost: 1000)
-document.getElementById("speedBoost").addEventListener("click", function () {
-    if (cookies >= speedBoostCost) {
-        cookies -= speedBoostCost;
-        updateCookieCount();
-
-        if (autoClickerActive) {
-            clearInterval(autoClickerInterval);
-            autoClickerInterval = setInterval(() => {
-                if (!gamePaused) {
-                    cookies += cookiesPerClick;
-                    updateCookieCount();
-                    createFallingCookie();
-                }
-            }, 500); // Speeds up auto-clicking
-        }
-    }
-});
-
-// Load saved cookies & upgrades
-updateCookieCount();
 
 // Function to create falling cookies from the top
 function createFallingCookie() {
@@ -120,23 +79,83 @@ document.getElementById("doubleCookies").addEventListener("click", function () {
     }
 });
 
-// Pause Button
-document.getElementById("pauseButton").addEventListener("click", function () {
-    gamePaused = !gamePaused;
-    this.textContent = gamePaused ? "Resume" : "Pause";
+// Golden Cookie Upgrade
+document.getElementById("goldenCookie").addEventListener("click", function () {
+    if (cookies >= goldenCookieCost) {
+        cookies -= goldenCookieCost;
+        updateCookieCount();
+
+        let originalCookiesPerClick = cookiesPerClick;
+        cookiesPerClick *= 2;
+
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createFallingCookie, i * 100);
+        }
+
+        setTimeout(() => {
+            cookiesPerClick = originalCookiesPerClick;
+        }, 10000);
+    }
 });
 
-// Reset Button
-document.getElementById("resetButton").addEventListener("click", function () {
-    cookies = 0;
-    cookiesPerClick = 1;
-    autoClickerActive = false;
-    gamePaused = false;
-    
-    localStorage.removeItem("cookies");
-    localStorage.removeItem("cookiesPerClick");
-    localStorage.removeItem("autoClickerActive");
+// Speed Boost Upgrade
+document.getElementById("speedBoost").addEventListener("click", function () {
+    if (cookies >= speedBoostCost) {
+        cookies -= speedBoostCost;
+        updateCookieCount();
 
-    clearInterval(autoClickerInterval);
-    updateCookieCount();
+        if (autoClickerActive) {
+            clearInterval(autoClickerInterval);
+            autoClickerInterval = setInterval(() => {
+                if (!gamePaused) {
+                    cookies += cookiesPerClick;
+                    updateCookieCount();
+                    createFallingCookie();
+                }
+            }, 500);
+        }
+    }
 });
+
+// Mega Clicker Upgrade
+document.getElementById("megaClicker").addEventListener("click", function () {
+    if (cookies >= megaClickerCost) {
+        cookies -= megaClickerCost;
+        cookiesPerClick += 10;
+        updateCookieCount();
+    }
+});
+
+// Golden Rain Upgrade
+document.getElementById("goldenRain").addEventListener("click", function () {
+    if (cookies >= goldenRainCost) {
+        cookies -= goldenRainCost;
+        updateCookieCount();
+
+        for (let i = 0; i < 50; i++) {
+            setTimeout(createFallingCookie, i * 50);
+        }
+    }
+});
+
+// Ultra Speed Boost Upgrade
+document.getElementById("ultraSpeedBoost").addEventListener("click", function () {
+    if (cookies >= ultraSpeedBoostCost) {
+        cookies -= ultraSpeedBoostCost;
+        updateCookieCount();
+
+        if (autoClickerActive) {
+            clearInterval(autoClickerInterval);
+            autoClickerInterval = setInterval(() => {
+                if (!gamePaused) {
+                    cookies += cookiesPerClick;
+                    updateCookieCount();
+                    createFallingCookie();
+                }
+            }, 250); // Ultra fast clicking
+        }
+    }
+});
+
+// Load saved cookies & upgrades
+updateCookieCount();

@@ -83,8 +83,12 @@ h1 {
     border-radius: 8px;
     transition: background 0.2s, transform 0.1s;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
+/* Hover Effect */
 .popup-toggle:hover {
     background: linear-gradient(135deg, #ff8800, #ffcc00);
     transform: scale(1.05);
@@ -106,9 +110,9 @@ h1 {
     text-align: center;
 }
 
-/* Show store when active */
-.popup-bar.active {
-    bottom: 60px;
+/* Add a subtle shadow when clicked */
+.popup-toggle:active {
+    transform: scale(0.95);
 }
 
 /* Store Header */
