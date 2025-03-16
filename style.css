@@ -33,7 +33,6 @@ body {
     transform: scale(0.9);
 }
 
-
 /* Center title */
 h1 {
     margin-bottom: 20px;
@@ -141,4 +140,25 @@ h1 {
 .upgrade-option:hover {
     background: #e6b800;
     transform: scale(1.05);
+}
+
+/* Falling Cookie Animation */
+.falling-cookie {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: rainCookies 3s linear;
+}
+
+@keyframes rainCookies {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
 }
