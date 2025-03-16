@@ -27,8 +27,7 @@ body {
     transition: transform 0.1s;
     background: none; /* Ensure no unwanted background */
 }
-ransition: transform 0.1s;
-}
+
 
 /* Click effect */
 .cookie:active {
