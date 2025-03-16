@@ -152,6 +152,41 @@ h1 {
     animation: rainCookies 3s linear;
 }
 
+/* Control Buttons */
+.control-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.control-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.control-button:hover {
+    background: linear-gradient(135deg, #ff1a1a, #ff4d4d);
+    transform: scale(1.05);
+}
+
+/* Falling Cookie Animation */
+.falling-cookie {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: rainCookies 3s linear;
+}
+
 @keyframes rainCookies {
     0% {
         transform: translateY(-50px) rotate(0deg);
