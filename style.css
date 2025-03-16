@@ -16,23 +16,6 @@ body {
     overflow: hidden;
 }
 
-/* Fix Cookie Size */
-.cookie {
-    width: 150px;  /* Adjust size as needed */
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
-}
-
-.cookie:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
-}
-
-.cookie:active {
-    transform: scale(0.9);
-}
-
 /* Center title */
 h1 {
     margin-bottom: 20px;
@@ -40,7 +23,7 @@ h1 {
     font-weight: bold;
 }
 
-/* Score Counter - Cool Animation */
+/* Score Counter */
 .counter {
     font-size: 32px;
     font-weight: bold;
@@ -68,6 +51,23 @@ h1 {
     background: linear-gradient(135deg, #ff8800, #ffcc00);
 }
 
+/* Cookie Styling */
+.cookie {
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.cookie:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+.cookie:active {
+    transform: scale(0.9);
+}
+
 /* Store Button */
 .popup-toggle {
     position: fixed;
@@ -88,19 +88,19 @@ h1 {
     gap: 8px;
 }
 
-/* Hover Effect */
+/* Store Button Hover Effect */
 .popup-toggle:hover {
     background: linear-gradient(135deg, #ff8800, #ffcc00);
     transform: scale(1.05);
 }
 
-/* Store Window with Updated Background */
+/* Store Window */
 .popup-bar {
     position: fixed;
     bottom: -100%;
     right: 20px;
     width: 280px;
-    background: linear-gradient(135deg, #ffdd99, #ffbb66); /* New gradient background */
+    background: linear-gradient(135deg, #ffdd99, #ffbb66);
     border: 2px solid #000;
     padding: 15px;
     box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.3);
@@ -110,9 +110,9 @@ h1 {
     text-align: center;
 }
 
-/* Add a subtle shadow when clicked */
-.popup-toggle:active {
-    transform: scale(0.95);
+/* Show store when active */
+.popup-bar.active {
+    bottom: 60px;
 }
 
 /* Store Header */
@@ -144,16 +144,6 @@ h1 {
 .upgrade-option:hover {
     background: #e6b800;
     transform: scale(1.05);
-}
-
-/* Falling Cookie Animation */
-.falling-cookie {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    pointer-events: none;
-    opacity: 0.8;
-    animation: rainCookies 3s linear;
 }
 
 /* Control Buttons */
