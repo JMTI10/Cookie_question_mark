@@ -15,9 +15,12 @@
     </div>
     <button class="upgrade-btn" id="upgrade">Upgrade (Cost: 10)</button>
     <button id="openPopup" class="open-popup-btn">Open Window</button>
-    <div id="popup" class="popup">
-        <p>This is a small window!</p>
-        <button id="closePopup">Close</button>
+    <div class="popup-bar">
+        <input type="checkbox" id="togglePopup" class="popup-checkbox">
+        <label for="togglePopup" class="popup-toggle">▲</label>
+        <div class="popup-content">
+            <p>This is a small expandable window!</p>
+        </div>
     </div>
     <script src="popup_script.js"></script>
     <script src="script.js"></script>

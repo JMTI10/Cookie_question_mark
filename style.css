@@ -66,10 +66,18 @@ body {
     padding: 10px;
     box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px 5px 0 0;
+    overflow: hidden;
 }
 
-/* Toggle button inside the bar */
+/* Hidden checkbox for toggling */
+.popup-checkbox {
+    display: none;
+}
+
+/* Toggle button (arrow) */
 .popup-toggle {
+    display: block;
+    text-align: center;
     width: 100%;
     background: #ffcc00;
     border: none;
@@ -79,8 +87,21 @@ body {
     border-radius: 5px;
 }
 
-/* Hidden content inside the popup bar */
+/* Content initially hidden */
 .popup-content {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
     padding-top: 10px;
 }
+
+/* When checkbox is checked, show content */
+.popup-checkbox:checked + .popup-toggle + .popup-content {
+    max-height: 100px;
+}
+
+/* Change arrow direction when checked */
+.popup-checkbox:checked + .popup-toggle::after {
+    content: "▼";
+}
+
