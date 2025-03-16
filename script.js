@@ -9,17 +9,46 @@ let autoClickerInterval;
 
 // Update cookie count display with animation
 function updateCookieCount() {
-    const counter = document.getElementById("cookieCount");
-    counter.textContent = cookies;
-    counter.style.transform = "scale(1.2)";
-    counter.style.transition = "transform 0.2s";
-    setTimeout(() => { counter.style.transform = "scale(1)"; }, 200);
+    document.getElementById("cookieCount").textContent = cookies;
     localStorage.setItem("cookies", cookies);
 }
 
 // Click cookie to earn cookies
-const cookie = document.getElementById("cookie");
-cookie.addEventListener("click", function () {
+document.getElementById("cookie").addEventListener("click", function () {
     cookies += cookiesPerClick;
     updateCookieCount();
 });
+
+// Auto Clicker Upgrade
+document.getElementById("autoClicker").addEventListener("click", function () {
+    if (cookies >= autoClickerCost && !autoClickerActive) {
+        cookies -= autoClickerCost;
+        autoClickerActive = true;
+        localStorage.setItem("autoClickerActive", JSON.stringify(autoClickerActive));
+        autoClickerInterval = setInterval(() => {
+            cookies += cookiesPerClick;
+            updateCookieCount();
+        }, 1000);
+    }
+});
+
+// Restore Auto Clicker on page reload
+if (autoClickerActive) {
+    autoClickerInterval = setInterval(() => {
+        cookies += cookiesPerClick;
+        updateCookieCount();
+    }, 1000);
+}
+
+// Double Cookies Upgrade
+document.getElementById("doubleCookies").addEventListener("click", function () {
+    if (cookies >= doubleCookiesCost) {
+        cookies -= doubleCookiesCost;
+        cookiesPerClick *= 2;
+        localStorage.setItem("cookiesPerClick", cookiesPerClick);
+        updateCookieCount();
+    }
+});
+
+// Load saved cookies & upgrades
+updateCookieCount();
