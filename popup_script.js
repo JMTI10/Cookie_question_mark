@@ -4,10 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     storeButton.addEventListener("click", function () {
         // Toggle the store's visibility
-        if (store.classList.contains("active")) {
-            store.classList.remove("active");
-        } else {
-            store.classList.add("active");
-        }
+        store.classList.toggle("active");
     });
 });
