@@ -7,18 +7,39 @@ let goldenCookieCost = 200;
 let speedBoostCost = 300;
 let autoClickerInterval;
 
-// Update cookie count display
+// Update cookie count display with animation
 function updateCookieCount() {
-    document.getElementById("cookieCount").textContent = cookies;
+    const counter = document.getElementById("cookieCount");
+    counter.textContent = cookies;
+    counter.style.transform = "scale(1.2)";
+    counter.style.transition = "transform 0.2s";
+    setTimeout(() => {
+        counter.style.transform = "scale(1)";
+    }, 200);
     localStorage.setItem("cookies", cookies);
 }
 
 // Click cookie to earn cookies
 const cookie = document.getElementById("cookie");
-cookie.addEventListener("click", function () {
+cookie.addEventListener("click", function (event) {
     cookies += cookiesPerClick;
     updateCookieCount();
+    createFallingCookie(event.clientX, event.clientY);
 });
+
+// Function to create falling cookies
+function createFallingCookie(x, y) {
+    const fallingCookie = document.createElement("img");
+    fallingCookie.src = "images/cookie.png";
+    fallingCookie.classList.add("falling-cookie");
+    fallingCookie.style.left = `${x}px`;
+    fallingCookie.style.top = `${y}px`;
+    document.body.appendChild(fallingCookie);
+    
+    setTimeout(() => {
+        fallingCookie.remove();
+    }, 1000);
+}
 
 // Toggle Store Panel
 const storeButton = document.getElementById("storeButton");
